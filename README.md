@@ -1,0 +1,2 @@
+# LeetCode
+Mine LeetCode Record
