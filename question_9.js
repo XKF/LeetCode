@@ -34,10 +34,24 @@ var isPalindrome = function(x) {
 
 /*
 
+
 进阶：
+你能不将整数转为字符串来解决这个问题吗？
 
 var isPalindrome = function(x) {
-    //coding....
+    if(x < 0){
+        return false;
+    }
+    let originNum = x;
+    let reNum = 0;
+    
+    while(originNum != 0) {
+        reNum *= 10;
+        reNum += originNum % 10;
+        originNum = parseInt(originNum / 10);
+    }
+    return x == reNum;
 };
+
 
 */
