@@ -25,18 +25,37 @@
  * @param {number[]} height
  * @return {number}
  */
-//暴力法
-var maxArea = function(height) {
-    let maxS = 0, _S = 0;
-    for(let i = 0;i < height.length; i++){
-        for(let j = i + 1;j < height.length; j++){
-            let x = j - i;
-            _S =  x * Math.min(height[i],height[j])
-            maxS = maxS > _S ? maxS : _S
-        }
-    }
-    return maxS;
-};
+// 暴力法
+// var maxArea = function(height) {
+//     let maxS = 0, _S = 0;
+//     for(let i = 0;i < height.length; i++){
+//         for(let j = i + 1;j < height.length; j++){
+//             let x = j - i;
+//             _S =  x * Math.min(height[i],height[j])
+//             maxS = maxS > _S ? maxS : _S
+//         }
+//     }
+//     return maxS;
+// };
 
-//优化
-//coding...
+// 优化
+var maxArea = function(height) {
+    let i = 0,j = height.length - 1,_S = 0;
+        let minHeight =  Math.min(height[i],height[j]);
+        let maxS = (j - i) * minHeight;
+        while(i != j){
+            if(height[i] < height[j]){
+                i ++ ;
+                if(height[i] > minHeight){
+                    _S = (j - i) * Math.min(height[i],height[j]);
+                }
+            }else{
+                j --;
+                if(height[j] > minHeight){
+                    _S = (j - i) * Math.min(height[i],height[j]);      
+                }
+            }
+            maxS = Math.max(maxS,_S)
+        }
+        return maxS;
+};
